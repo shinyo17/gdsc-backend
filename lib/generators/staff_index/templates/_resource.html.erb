@@ -1,0 +1,32 @@
+<!-- Row -->
+<tr>
+    <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
+        <div class="flex items-center">
+            <label class="inline-flex">
+                <span class="sr-only">Select</span>
+                <input class="table-item form-checkbox" type="checkbox" @click="uncheckParent" />
+            </label>
+        </div>
+    </td>
+    <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
+        <div class="flex items-center relative">
+            <button>
+                <svg class="w-4 h-4 shrink-0 fill-current text-amber-500" viewBox="0 0 16 16">
+                    <path d="M8 0L6 5.934H0l4.89 3.954L2.968 16 8 12.223 13.032 16 11.11 9.888 16 5.934h-6L8 0z" />
+                </svg>
+            </button>
+        </div>
+    </td>
+<% singular_model_camel_name.constantize.send("display_index_row_attributes").each do |attribute| %>
+    <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+    <% if attribute =~ /.*_at$/ %>
+        <div class="text-left"><%%=l <%=singular_model_name%>.<%=attribute%>, format: :short %></div>
+    <% else %>
+        <div class="text-left"><%%= <%=singular_model_name%>.<%=attribute%> %></div>
+    <% end %>
+    </td>
+<% end %>
+    <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
+        <%%= render "menu_button", resource: <%=singular_model_name%> %>
+    </td>
+</tr>

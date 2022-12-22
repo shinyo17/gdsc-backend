@@ -1,0 +1,57 @@
+{
+    "rubyTestExplorer.logpanel": true,
+    "rubyTestExplorer.testFramework": "rspec",
+    "rubyTestExplorer.rspecCommand": "bundle exec rspec",
+    "rubyTestExplorer.rspecDirectory": "./spec/",
+    "files.associations": {
+        "*.jb": "ruby",
+        "*.axlsx": "ruby"
+    },
+
+    "ruby.rubocop.executePath": "",
+    "ruby.rubocop.onSave": true,
+    "ruby.rubocop.configFilePath": "./.rubocop.yml",
+
+    "search.excludeFolders": [
+        ".git",
+        "node_modules",
+        "bower_components",
+        "coverage"
+    ],
+
+    /* settings for each languages */
+    "[ruby]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false
+    },
+
+    "[erb]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false
+    },
+
+    "[scss]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false,
+        "editor.suggest.insertMode": "replace"
+    },
+
+    "[json5]": {
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false,
+
+        "editor.quickSuggestions": {
+            "strings": true
+        },
+        "editor.suggest.insertMode": "replace"
+    },
+
+    "solargraph.transport": "stdio",
+    "solargraph.useBundler": true,
+    "solargraph.formatting": true,
+    "solargraph.diagnostics": true
+}

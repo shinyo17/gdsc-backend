@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>StandardBackend</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "staff", "data-turbo-track": "reload" %>
+
+
+  </head>
+
+<body
+    class="font-inter antialiased bg-slate-100 text-slate-600"
+    :class="{ 'sidebar-expanded': sidebarExpanded }"
+    x-data="{ sidebarOpen: false, sidebarExpanded: localStorage.getItem('sidebar-expanded') == 'true' }"
+    x-init="$watch('sidebarExpanded', value => localStorage.setItem('sidebar-expanded', value))"
+>
+
+    <script>
+        if (localStorage.getItem('sidebar-expanded') == 'true') {
+            document.querySelector('body').classList.add('sidebar-expanded');
+        } else {
+            document.querySelector('body').classList.remove('sidebar-expanded');
+        }
+    </script>
+
+    <%= yield %>
+    <%= javascript_include_tag "chart" %>
+    <%= javascript_include_tag "moment" %>
+    <%= javascript_include_tag "chartjs-adapter-moment" %>
+    <%= javascript_include_tag "dashboard-charts" %>
+    <%= javascript_include_tag "flatpickr" %>
+    <%= javascript_include_tag "flatpickr-init" %>
+</body>
+
+</html>

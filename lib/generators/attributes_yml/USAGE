@@ -1,0 +1,5 @@
+Description:
+    db 폴더에 있는 attributes.yml 에 모델 테이블의 attributes 넣어주기
+
+Example:
+    bin/rails generate attributes_yml model_name

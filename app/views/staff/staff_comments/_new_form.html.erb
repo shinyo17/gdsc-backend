@@ -1,0 +1,23 @@
+<div class="mb-6">
+    <div class="flex items-center justify-between">
+        <label class="block text-sm font-medium mb-1" for="body">
+            body
+            <span class="text-rose-500">*</span>
+        </label>
+    </div>
+    <%= f.text_field :body, class: "form-input w-full mb-2", id: "body" %>
+
+    <div class="flex items-center justify-between">
+        <label class="block text-sm font-medium mb-1" for="path">
+            path
+        </label>
+        <div class="text-sm text-slate-400 italic">optional</div>
+    </div>
+    <%= f.text_field :path, class: "form-input w-full mb-2", id: "path" %>
+
+</div>
+<div class="mb-4">
+    <button class="btn w-full bg-indigo-500 hover:bg-indigo-600 text-white">저장</button>
+</div>
+
+

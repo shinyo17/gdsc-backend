@@ -1,0 +1,42 @@
+# frozen_string_literal: true
+
+class <%= repository_class_name %>
+  class << self
+    def search(current_user, params)
+      <%= collections_name %> = current_user
+        .includes([])
+        .<%= collections_name %>
+        .order(created_at: :desc)
+        .page(params[:page])
+        .per(20)
+
+      return <%= collections_name %>
+    end
+
+    def admin_search(params)
+      <%= collections_name %> = <%= model_class_name %>
+        .includes([])
+        .all
+
+      filtered_params = filter_column(params)
+      q = <%= collections_name %>.ransack(filtered_params)
+
+      <%= collections_name %> = q
+        .result
+        .order("id desc")
+        .page(params[:page])
+        .per(30)
+
+      return {
+        q: q,
+        result: <%= collections_name %>
+      }
+    end
+
+    private
+      def filter_column(params)
+        return {} if params[:q].nil?
+        params[:q]
+      end
+  end
+end

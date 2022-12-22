@@ -1,0 +1,7 @@
+json = {
+  status: @status,
+}
+json.merge! eval(yield)
+
+json
+

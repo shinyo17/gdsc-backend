@@ -1,0 +1,11 @@
+application: "gdsc"
+repo_owner: "TeamMilestone"
+deploy_url: "server.kebal.in"
+
+# development:
+  # deploy_url: "server.kebal.in"
+  # repo_url: "git@github.com:TeamMilestone/standard-backend.git"
+  # application: "standard-backend"
+# production:
+#   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
+#   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU

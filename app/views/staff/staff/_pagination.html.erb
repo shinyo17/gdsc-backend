@@ -1,0 +1,45 @@
+<!-- Pagination -->
+<div class="mt-8">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+        <nav class="mb-4 sm:mb-0 sm:order-1" role="navigation" aria-label="Navigation">
+            <ul class="flex justify-center">
+                <li class="ml-3 first:ml-0">
+                <% if collection.first_page? %>
+                    <a class="btn bg-white border-slate-200 text-slate-300 cursor-not-allowed" href="#0" disabled>&lt;- Previous</a>
+                <% else %>
+                    <%= link_to path_to_prev_page(collection), class: "btn bg-white border-slate-200 hover:border-slate-300 text-indigo-500" do %>
+                        &lt;- Previous
+                    <% end %>
+                <% end %>
+                </li>
+                <li class="ml-3 first:ml-0">
+                    <% if collection.next_page.nil? %>
+                        <a class="btn bg-white border-slate-200 text-slate-300 cursor-not-allowed" href="#0" disabled>Next -&gt;</a>
+                    <% else %>
+                        <%= link_to path_to_next_page(collection), class: "btn bg-white border-slate-200 hover:border-slate-300 text-indigo-500" do %>
+                            Next -&gt;
+                        <% end %>
+                    <% end %>
+                </li>
+            </ul>
+        </nav>
+        <div class="text-sm text-slate-500 text-center sm:text-left">
+            Showing
+            <% if page_entries[:total] < 2 %>
+            <% else %>
+                <span class="font-medium text-slate-600">
+                    <%= page_entries[:first] %>
+                </span>
+                to
+                <span class="font-medium text-slate-600">
+                    <%= page_entries[:last] %>
+                </span>
+                of
+            <% end %>
+            <span class="font-medium text-slate-600">
+                <%= page_entries[:total] %>
+            </span>
+            results
+        </div>
+    </div>
+</div>

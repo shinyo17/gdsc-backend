@@ -1,0 +1,30 @@
+<div class="mb-6">
+<%- singular_model_camel_name.constantize.send("form_attributes")[:editable].each do |attribute| -%>
+<%- key = attribute.keys[0] -%>
+<%- value = attribute.values[0] -%>
+<%- if attribute =~ /.*_at$/ -%>
+    <%% if @<%=singular_model_name%>.<%=key%>.present? %>
+    <div class="text-left"><%%=l @<%=singular_model_name%>.<%=key%>, format: :short %></div>
+    <%% end %>
+<%- else -%>
+    <div class="flex items-center justify-between">
+        <label class="block text-sm font-medium mb-1" for="<%=key%>">
+            <%=key%>
+        <%- if value == "required" -%>
+            <span class="text-rose-500">*</span>
+        <%- end -%>
+        </label>
+    <%- if value == "optional" -%>
+        <div class="text-sm text-slate-400 italic">optional</div>
+    <%- end -%>
+    </div>
+    <%%= f.text_field :<%=key%>, class: "form-input w-full mb-2", id: "<%=key%>" %>
+<%- end -%>
+
+<%- end -%>
+</div>
+<div class="mb-4">
+    <button class="btn w-full bg-indigo-500 hover:bg-indigo-600 text-white">저장</button>
+</div>
+
+

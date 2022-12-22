@@ -1,0 +1,124 @@
+
+<% page_entries = page_entries_info_hash(@staff_comments, entry_name: nil) %>
+<!-- Page wrapper -->
+<div class="flex h-screen overflow-hidden">
+
+<%= render "sidebar" %>
+    <!-- Content area -->
+    <div class="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+        <%= render "header" %>
+        <main>
+            <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
+                <%= render "actions" %>
+                <!-- Table -->
+                <div class="bg-white shadow-lg rounded-sm border border-slate-200">
+                    <header class="px-5 py-4">
+                        <h2 class="font-semibold text-slate-800">
+                            <span class="text-slate-400 font-medium">
+                                <%= page_entries[:total] %>
+                            </span>
+                            <span>
+                                Users
+                            </span>
+                        </h2>
+                    </header>
+                    <div x-data="handleSelect">
+
+                        <!-- Table -->
+                        <div class="overflow-x-auto">
+                            <table class="table-auto w-full">
+                                <!-- Table header -->
+                                <thead class="text-xs font-semibold uppercase text-slate-500 bg-slate-50 border-t border-b border-slate-200">
+                                    <tr>
+                                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
+                                            <div class="flex items-center">
+                                                <label class="inline-flex">
+                                                    <span class="sr-only">Select all</span>
+                                                    <input id="parent-checkbox" class="form-checkbox" type="checkbox" @click="toggleAll" />
+                                                </label>
+                                            </div>
+                                        </th>
+                                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
+                                            <span class="sr-only">Favourite</span>
+                                        </th>
+                                        
+                                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                            <div class="font-semibold text-left">id</div>
+                                        </th>
+                                        
+                                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                            <div class="font-semibold text-left">staff_name</div>
+                                        </th>
+                                        
+                                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                            <div class="font-semibold text-left">body</div>
+                                        </th>
+                                        
+                                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                            <div class="font-semibold text-left">path</div>
+                                        </th>
+                                        
+                                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                            <div class="font-semibold text-left">created_at</div>
+                                        </th>
+                                        
+                                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                            <div class="font-semibold text-left">updated_at</div>
+                                        </th>
+                                        
+                                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                            <span class="sr-only">Menu</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <!-- Table body -->
+                                <tbody class="text-sm divide-y divide-slate-200">
+                                    <% @staff_comments.each_with_index do |staff_comment, i| %>
+                                        <%= render "staff_comment", staff_comment: staff_comment, i: i %>
+                                    <% end %>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    // A basic demo function to handle "select all" functionality
+                    document.addEventListener('alpine:init', () => {
+                        Alpine.data('handleSelect', () => ({
+                            selectall: false,
+                            selectAction() {
+                                countEl = document.querySelector('.table-items-action');
+                                if (!countEl) return;
+                                checkboxes = document.querySelectorAll('input.table-item:checked');
+                                document.querySelector('.table-items-count').innerHTML = checkboxes.length;
+                                if (checkboxes.length > 0) {
+                                    countEl.classList.remove('hidden');
+                                } else {
+                                    countEl.classList.add('hidden');
+                                }
+                            },
+                            toggleAll() {
+                                this.selectall = !this.selectall;
+                                checkboxes = document.querySelectorAll('input.table-item');
+                                [...checkboxes].map((el) => {
+                                    el.checked = this.selectall;
+                                });
+                                this.selectAction();
+                            },
+                            uncheckParent() {
+                                this.selectall = false;
+                                document.getElementById('parent-checkbox').checked = false;
+                                this.selectAction();
+                            }
+                        }))
+                    })
+                </script>
+                <%= render "pagination", collection: @staff_comments, page_entries: page_entries %>
+            </div>
+        </main>
+
+    </div>
+
+</div>
+

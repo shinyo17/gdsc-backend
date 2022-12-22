@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 5
+
+development:
+  <<: *default
+  # database: gdsc_development
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASSWD'] %>
+  host: <%= ENV['POSTGRES_HOST'] %>
+
+test:
+  <<: *default
+  # database: gdsc_test
+
+production:
+  <<: *default
+  # database: gdsc_production

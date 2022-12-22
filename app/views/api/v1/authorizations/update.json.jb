@@ -1,0 +1,2 @@
+user_attributes = render('api/v1/users/attributes', user: @user)
+{ result: @result }.merge(user_attributes)

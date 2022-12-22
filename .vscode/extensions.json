@@ -1,0 +1,19 @@
+{
+    "recommendations": [
+        // Ruby Specific Extensions
+        "rebornix.ruby",
+        "hbenl.vscode-test-explorer",
+        "connorshea.vscode-test-explorer-status-bar",
+        "connorshea.vscode-ruby-test-adapter",
+        "misogi.ruby-rubocop",
+        "castwide.solargraph",
+
+        // editorconfig for source code formatting
+        "editorconfig.editorconfig",
+
+        // helps code formatting
+        "shardulm94.trailing-spaces",
+        "coenraads.bracket-pair-colorizer-2",
+        "oderwat.indent-rainbow"
+    ]
+}

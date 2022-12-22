@@ -1,0 +1,53 @@
+# injected attributes in models
+staff_comment:
+  display_attributes:
+  - id
+  - staff_name
+  - body
+  - path
+  - created_at
+  - updated_at
+  searchable_attributes:
+    bigram:
+    - staff_name
+    - body
+    trigram:
+    - path
+  form_attributes:
+    - body: required
+    - path
+staff_user:
+  display_attributes:
+  - id
+  - email
+  - name
+  - username
+  - phone
+  - created_at
+  - updated_at
+  searchable_attributes:
+    bigram:
+    - name
+    - username
+    trigram:
+    - email
+    number_attributes:
+    - phone
+
+user:
+  display_attributes:
+    - email
+    - name
+    - username
+    - phone
+    - display_address
+  searchable_attributes:
+    bigram:
+      - name
+      - username
+      - display_address
+    trigram:
+      - email
+    number_attributes:
+      - phone
+

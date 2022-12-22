@@ -1,0 +1,9 @@
+
+require 'test_helper'
+
+class <%= service_class_name %>Test < ActiveSupport::TestCase
+  test "<%= name.underscore %>'s first test" do
+    puts <%= service_class_name %>.call(Time.current)
+    assert true
+  end
+end

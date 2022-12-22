@@ -1,0 +1,8 @@
+development:
+  rpc_host: localhost:50051
+  redis_url: redis://localhost:6379/1
+  access_logs_disabled: false
+staging:
+  rpc_host: test.example.com:50051
+  redis_url: redis://localhost:6379/1
+  access_logs_disabled: false
