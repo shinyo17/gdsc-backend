@@ -6,7 +6,4 @@ attributes = {
   created_at: user.created_at.as_json,
   updated_at: user.updated_at.as_json,
   terms_accepted_at: user.terms_accepted_at.as_json,
-  user_type: user.user_type,
 }
-
-{ user: attributes }
