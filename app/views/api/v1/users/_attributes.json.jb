@@ -1,9 +1,11 @@
 attributes = {
   id: user.id,
   email: user.email,
-  name: user.name,
+  username: user.username,
   phone: user.phone,
   created_at: user.created_at.as_json,
-  updated_at: user.updated_at.as_json
+  updated_at: user.updated_at.as_json,
+  terms_accepted_at: user.terms_accepted_at.as_json,
 }
+
 { user: attributes }
