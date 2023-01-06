@@ -86,9 +86,6 @@ class Api::V1::AuthorizationsController < Api::V1::BaseController
     end
 
     @user.terms_accepted_at = sign_up_params[:terms_accepted_at]
-    unless sign_up_params[:marketing_accepted_at].nil?
-      @user.marketing_targeted_at = sign_up_params[:marketing_accepted_at]
-    end
     @user.save
 
     @access_token, @refresh_token = JwtAuth.issue(@user)
