@@ -1,0 +1,1 @@
+render('attributes', post: @post)

@@ -1,0 +1,7 @@
+attributes = {
+  id: post.id,
+  title: post.title,
+  description: post.description,
+  created_at: post.created_at.as_json,
+  updated_at: post.updated_at.as_json,
+}

@@ -9,4 +9,6 @@ namespace :v1 do
   end
 
   resources :users
+
+  resources :posts
 end
