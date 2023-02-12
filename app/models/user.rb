@@ -1,5 +1,6 @@
 require "bigram_tokenizer"
 class User < ApplicationRecord
+  has_many :posts
   class << self
     def staff_search(query)
       return all if query.blank?
