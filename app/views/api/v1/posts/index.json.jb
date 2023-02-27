@@ -1,1 +1,3 @@
-render('attributes', post: @post)
+{
+  posts: render(partial: 'attributes_without_key', collection: @posts, as: :post),
+}

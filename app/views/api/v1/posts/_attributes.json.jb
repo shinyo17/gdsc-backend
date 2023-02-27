@@ -4,6 +4,7 @@ attributes = {
   description: post.description,
   created_at: post.created_at.as_json,
   updated_at: post.updated_at.as_json,
+  user_id: post.user_id
 }
 
 
