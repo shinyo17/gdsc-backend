@@ -4,7 +4,7 @@ class Api::V1::PostsController < Api::V1::BaseController
   before_action :find_post, only: %i[show]
 
   def index
-    @posts = Post.includes(:user).where.not(users: { id: nil })
+    @posts = Post.all
     @posts = @posts.order(created_at: :desc)
     render status: @status
   end
